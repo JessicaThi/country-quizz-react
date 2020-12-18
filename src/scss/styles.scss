@@ -5,22 +5,129 @@
   padding: 0;
 }
 
-body {
-  color: $black;
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba($purple, 0.7);
 }
 
-.regular {
-  font-family: $poppins_regular;
-}
-
-.medium {
-  font-family: $poppins_medium;
-}
-
-.semibold {
-  font-family: $poppins_semibold;
-}
-
-.bold {
+.title {
   font-family: $poppins_bold;
+  font-size: 2.25rem;
+  text-transform: uppercase;
+  color: $white;
+  position: relative;
+  z-index: 1;
+}
+
+.box-content {
+  width: 465px;
+  background-color: $white;
+  border-radius: 1.5rem;
+  padding: 4.25rem 2rem;
+  position: relative;
+  box-sizing: border-box;
+
+  &__image-decoration {
+    position: absolute;
+    right: 0;
+    top: -4.625rem;
+    z-index: 2;
+  }
+
+  &__question {
+    font-family: $poppins_bold;
+    font-size: 1.5rem;
+    color: $dark-blue;
+  }
+
+  &__answer {
+    font-family: $poppins_semibold;
+    font-size: 1.125rem;
+    color: $purple;
+    border-radius: 0.75rem;
+    border: 1px solid $purple;
+    padding: 0.625rem 1.25rem;
+    margin: 1.5rem 0;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      color: $white;
+      border: 1px solid $orange;
+      background-color: $orange;
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+  &__answer_good {
+    background-color: $green;
+    border: 1px solid $green;
+    color: $white;
+    opacity: 1;
+
+    &:hover {
+      background-color: $green;
+      border: 1px solid $green;
+    }
+  }
+
+  &__answer_wrong {
+    background-color: $red;
+    border: 1px solid $red;
+    color: $white;
+    opacity: 1;
+    position: relative;
+
+    &:after {
+      content: '';
+      background-image: url("../img/wrong.svg");
+      background-color: pink;
+      background-size: cover;
+      color: $white;
+      height: 1.25rem;
+      width: 1.25rem;
+      position: absolute;
+      right: 1.125rem;
+    }
+
+    &:hover {
+      background-color: $red;
+      border: 1px solid $red;
+    }
+  }
+}
+
+.validation {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button {
+  &__full {
+    font-family: $poppins_bold;
+    font-size: 1.125rem;
+    color: $white;
+    background-color: $orange;
+    padding: 0.9rem 2.25rem;
+    border-radius: 1.5rem;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__empty {
+    font-family: $poppins_semibold;
+    font-size: 1.125rem;
+    color: $dark-blue;
+    border: 1px solid $dark-blue;
+    border-radius: 1.5rem;
+    padding: 0.9rem 3.75rem;
+  }
 }
