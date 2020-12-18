@@ -1,0 +1,26 @@
+@import "partials/variables";
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: $black;
+}
+
+.regular {
+  font-family: $poppins_regular;
+}
+
+.medium {
+  font-family: $poppins_medium;
+}
+
+.semibold {
+  font-family: $poppins_semibold;
+}
+
+.bold {
+  font-family: $poppins_bold;
+}
