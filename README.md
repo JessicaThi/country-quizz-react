@@ -52,7 +52,7 @@ Introduce your projects by taking a screenshot or a gif. Try to tell visitors a 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 - [Create React app](https://create-react-app.dev/)
-- [Tailwind](https://tailwindcss.com/)
+- [Sass](https://sass-lang.com/)
 
 ## Features
 
