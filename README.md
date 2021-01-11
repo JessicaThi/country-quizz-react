@@ -30,8 +30,9 @@
   - [Built With](#built-with)
 - [Features](#features)
 - [How to use](#how-to-use)
-- [Contact](#contact)
+- [Getting Started with Create React App](#Getting-Started-with-Create-React-App)
 - [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
 <!-- OVERVIEW -->
 
@@ -74,7 +75,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
+$ git clone https://github.com/JessicaThi/country-quizz-react
 
 # Install dependencies
 $ npm install
@@ -82,21 +83,6 @@ $ npm install
 # Run the app
 $ npm start
 ```
-
-## Acknowledgements
-
-<!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example: -->
-
-- [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
-- [Node.js](https://nodejs.org/)
-- [Marked - a markdown parser](https://github.com/chjj/marked)
-
-## Contact
-
-- Website [Jessica-thielemans.com](https://www.jessica-thielemans.com/)
-- GitHub [@JessicaThi](https://{github.com/your-usermame})
-- Twitter [@jessica_thlmns](https://twitter.com/Jessica_thlmns)
-
 
 # Getting Started with Create React App
 
@@ -168,3 +154,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## Acknowledgements
+
+<!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example: -->
+
+- [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
+- [Node.js](https://nodejs.org/)
+- [Marked - a markdown parser](https://github.com/chjj/marked)
+
+## Contact
+
+- Website [Jessica-thielemans.com](https://www.jessica-thielemans.com/)
+- GitHub [@JessicaThi](https://{github.com/your-usermame})
+- Twitter [@jessica_thlmns](https://twitter.com/Jessica_thlmns)
