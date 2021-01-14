@@ -4,10 +4,8 @@ import adventure from "./img/adventure.svg"
 
 function App() {
   const [data, setData] = useState('');
-  const [randomNumber, setRandomNumber] = useState('');
+  const [randomAnswers, setRandomAnswers] = useState([]);
   const [correctAnswer, setCorrectAnswer] = useState('');
-
-  const [items, setItems] = useState([]);
 
   useEffect(() => {
     fetch("https://restcountries.eu/rest/v2/all")
@@ -17,12 +15,24 @@ function App() {
 
   useEffect(() => {
     if (data) {
-      setRandomNumber(Math.floor(Math.random() * (data.length - 0)) + 0);
+      // var randomAnswers = [...Array(3)].map(() => Math.floor(Math.random() * (4 - 0)) + 0);
+      //var randomAnswers = [1, 1, 3, 4, 3, 2];
 
-      var randomAnswers = [...Array(3)].map(() => Math.floor(Math.random() * (data.length - 0)) + 0);
-      setItems(randomAnswers);
+      for (var i = 0; randomAnswers.length < 3; i++) {
+        var randomNumber = Math.floor(Math.random() * (data.length - 0)) + 0;
+        console.log(randomNumber)
 
-      setCorrectAnswer(randomAnswers[Math.floor(Math.random() * 3)]);
+        if (randomAnswers.includes(randomNumber)) {
+          console.log("nope")
+        } else {
+          randomAnswers.push(randomNumber);
+        }
+
+        if (randomAnswers.length === 3) {
+          setCorrectAnswer(randomAnswers[Math.floor(Math.random() * (3 - 0)) + 0])
+        }
+      }
+      setRandomAnswers(randomAnswers);
     }
   }, [data])
 
@@ -36,8 +46,8 @@ function App() {
           {/*<div className="box-content__answer box-content__answer_wrong">A Vietnam</div>
           {randomNumber ? <div className="box-content__answer box-content__answer_good">B {data[randomNumber].name}</div> : ''}
           <div className="box-content__answer">A Vietnam</div> */}
-          { items ?
-            items.map(item => (
+          {correctAnswer ?
+            randomAnswers.map((item, index) => (
               <div className="box-content__answer" key={item}>{data[item].name}</div>
             )) : ''
           }
