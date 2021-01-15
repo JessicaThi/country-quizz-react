@@ -5,7 +5,9 @@ import adventure from "./img/adventure.svg"
 function App() {
   const [data, setData] = useState('');
   const [randomAnswers, setRandomAnswers] = useState([]);
-  const [correctAnswer, setCorrectAnswer] = useState('');
+  const [correctAnswerIndex, setCorrectAnswerIndex] = useState(null);
+
+  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
 
   useEffect(() => {
     fetch("https://restcountries.eu/rest/v2/all")
@@ -15,9 +17,6 @@ function App() {
 
   useEffect(() => {
     if (data) {
-      // var randomAnswers = [...Array(3)].map(() => Math.floor(Math.random() * (4 - 0)) + 0);
-      //var randomAnswers = [1, 1, 3, 4, 3, 2];
-
       for (var i = 0; randomAnswers.length < 3; i++) {
         var randomNumber = Math.floor(Math.random() * (data.length - 0)) + 0;
         console.log(randomNumber)
@@ -29,12 +28,13 @@ function App() {
         }
 
         if (randomAnswers.length === 3) {
-          setCorrectAnswer(randomAnswers[Math.floor(Math.random() * (3 - 0)) + 0])
+          setCorrectAnswerIndex(randomAnswers[Math.floor(Math.random() * (3 - 0)) + 0])
         }
       }
       setRandomAnswers(randomAnswers);
     }
-  }, [data])
+  }, [data, randomAnswers])
+
 
   return (
     <main className="App">
@@ -42,14 +42,33 @@ function App() {
         <h1 className="title">Country Quizz</h1>
         <div className="box-content">
           <img className="box-content__image-decoration" src={adventure} alt="adventure" />
-          {correctAnswer ? <p className="box-content__question">{data[correctAnswer].capital} is the capital of {correctAnswer}</p> : ''}
-          {/*<div className="box-content__answer box-content__answer_wrong">A Vietnam</div>
-          {randomNumber ? <div className="box-content__answer box-content__answer_good">B {data[randomNumber].name}</div> : ''}
-          <div className="box-content__answer">A Vietnam</div> */}
-          {correctAnswer ?
-            randomAnswers.map((item, index) => (
-              <div className="box-content__answer" key={item}>{data[item].name}</div>
-            )) : ''
+          {correctAnswerIndex ? <p className="box-content__question">{data[correctAnswerIndex].capital} is the capital of</p> : ''}
+          {
+            randomAnswers.map((answer, index) => {
+
+              console.log(correctAnswerIndex + " answer " + selectedAnswerIndex)
+              const isSelected =
+                selectedAnswerIndex !== null && index === selectedAnswerIndex;
+
+              const answeredRight = answer === correctAnswerIndex;
+
+              if (isSelected) {
+                return (
+                  <div
+                    className={`box-content__answer ${answeredRight ? "box-content__answer_good" : "box-content__answer_wrong"}`} key={index}
+                    onClick={() => setSelectedAnswerIndex(index)}
+                  >
+                    {data[answer].name}
+                  </div>
+                );
+              }
+
+              return (
+                <div className="box-content__answer" key={index} onClick={() => setSelectedAnswerIndex(index)}>
+                  {data[answer].name}
+                </div>
+              );
+            })
           }
           <div className="validation">
             <button className="button__full">Next</button>
