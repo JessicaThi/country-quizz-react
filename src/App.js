@@ -6,8 +6,9 @@ function App() {
   const [data, setData] = useState('');
   const [randomAnswers, setRandomAnswers] = useState([]);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(null);
-
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
+  const [nextStep, setNextStep] = useState('');
+  const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     fetch("https://restcountries.eu/rest/v2/all")
@@ -19,10 +20,8 @@ function App() {
     if (data) {
       for (var i = 0; randomAnswers.length < 3; i++) {
         var randomNumber = Math.floor(Math.random() * (data.length - 0)) + 0;
-        console.log(randomNumber)
 
         if (randomAnswers.includes(randomNumber)) {
-          console.log("nope")
         } else {
           randomAnswers.push(randomNumber);
         }
@@ -35,6 +34,23 @@ function App() {
     }
   }, [data, randomAnswers])
 
+  const checkAnswer = (answeredRight, index) => {
+    setSelectedAnswerIndex(index);
+    setNextStep(answeredRight);
+
+    if (answeredRight) {
+      setCounter(counter + 1);
+    } else {
+      setCounter(0);
+    }
+  }
+
+  const newQuestion = () => {
+    setRandomAnswers([]);
+    setCorrectAnswerIndex(null);
+    setSelectedAnswerIndex(null);
+    setNextStep('');
+  }
 
   return (
     <main className="App">
@@ -45,8 +61,6 @@ function App() {
           {correctAnswerIndex ? <p className="box-content__question">{data[correctAnswerIndex].capital} is the capital of</p> : ''}
           {
             randomAnswers.map((answer, index) => {
-
-              console.log(correctAnswerIndex + " answer " + selectedAnswerIndex)
               const isSelected =
                 selectedAnswerIndex !== null && index === selectedAnswerIndex;
 
@@ -64,15 +78,13 @@ function App() {
               }
 
               return (
-                <div className="box-content__answer" key={index} onClick={() => setSelectedAnswerIndex(index)}>
+                <div className="box-content__answer" key={index} onClick={() => checkAnswer(answeredRight, index)}>
                   {data[answer].name}
                 </div>
               );
             })
           }
-          <div className="validation">
-            <button className="button__full">Next</button>
-          </div>
+          { nextStep ? <div className="validation"><button className="button__full" onClick={() =>   newQuestion()}>Next</button></div> : ''}
         </div>
       </div>
     </main>
