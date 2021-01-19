@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import './scss/styles.scss'
 import adventure from "./img/adventure.svg"
+import NextButton from "./components/NextButton";
 
 function App() {
   const [data, setData] = useState('');
@@ -84,7 +85,7 @@ function App() {
               );
             })
           }
-          { nextStep ? <div className="validation"><button className="button__full" onClick={() =>   newQuestion()}>Next</button></div> : ''}
+          {nextStep ? <NextButton onPress={newQuestion} /> : ''}
         </div>
       </div>
     </main>
