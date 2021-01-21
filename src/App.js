@@ -47,9 +47,7 @@ function App() {
 
     if (answeredRight) {
       setCounter(counter + 1);
-    } else {
-      setCounter(0);
-    }
+    } 
   }
 
   const newQuestion = () => {
@@ -57,6 +55,14 @@ function App() {
     setCorrectAnswerIndex(null);
     setSelectedAnswerIndex(null);
     setNextStep('');
+  }
+
+  const restart = () => {
+    setRandomAnswers([]);
+    setCorrectAnswerIndex(null);
+    setSelectedAnswerIndex(null);
+    setNextStep('');
+    setCounter(0);
   }
 
   return (
@@ -76,7 +82,7 @@ function App() {
                     newQuestion={newQuestion} 
                   />
           } else {
-            return <Result counter={counter} />
+            return <Result counter={counter} restart={restart} />
           }
         })()}
       </div>
