@@ -58,6 +58,7 @@ function App() {
       <div className="box">
         <h1 className="title">Country Quizz</h1>
         <div className="box-content">
+          {/* (nextStep == '' || nextStep == 1)  */}
           <img className="box-content__image-decoration" src={adventure} alt="adventure" />
           {correctAnswerIndex ? <p className="box-content__question">{data[correctAnswerIndex].capital} is the capital of</p> : ''}
           {
