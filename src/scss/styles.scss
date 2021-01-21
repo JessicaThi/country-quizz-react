@@ -21,6 +21,7 @@ main {
   color: $white;
   position: relative;
   z-index: 1;
+  padding-bottom: 0.25rem;
 }
 
 .box-content {
@@ -30,6 +31,13 @@ main {
   padding: 4.25rem 2rem 2rem;
   position: relative;
   box-sizing: border-box;
+
+  &__winner {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 3.125rem 2rem 2rem;
+  }
 
   &__image-decoration {
     position: absolute;
@@ -111,24 +119,48 @@ main {
   justify-content: flex-end;
 }
 
-.button {
+.button {  
   &__full {
     font-family: $poppins_bold;
     font-size: 1.125rem;
     color: $white;
     background-color: $orange;
     padding: 0.9rem 2.25rem;
-    border-radius: 1.5rem;
     border: none;
+    border-radius: 0.75rem;
     cursor: pointer;
   }
 
   &__empty {
+    width: 13.125rem;
     font-family: $poppins_semibold;
     font-size: 1.125rem;
     color: $dark-blue;
-    border: 1px solid $dark-blue;
-    border-radius: 1.5rem;
+    border: 0.125rem solid $dark-blue;
     padding: 0.9rem 3.75rem;
+    border-radius: 0.755rem;
+    cursor: pointer;
   }
+}
+
+.result-title {
+  font-family: $poppins_bold;
+  font-size: 3rem;
+  text-align: center;
+  color: $black;
+  padding-top: 4.375rem;
+}
+
+.result-text {
+  font-family: $poppins_regular;
+  font-size: 1.125rem;
+  text-align: center;
+  color: $black;
+  padding-bottom: 4.375rem;
+}
+
+.result-number {
+  font-family: $poppins_bold;
+  font-size: 2.25rem;
+  color: $green;
 }

@@ -1,10 +1,9 @@
 import React from 'react'
 import adventure from "./../img/adventure.svg"
 
-export default function Quizz() {
+const Questionaire = ({ data, randomAnswers, correctAnswerIndex, selectedAnswerIndex, chooseAnswer, nextStep, newQuestion, checkAnswer }) => {
   return (
     <div className="box-content">
-      {/* (nextStep === '' || nextStep == 1)  */}
       <img className="box-content__image-decoration" src={adventure} alt="adventure" />
       {correctAnswerIndex ? <p className="box-content__question">{data[correctAnswerIndex].capital} is the capital of</p> : ''}
       {
@@ -18,7 +17,7 @@ export default function Quizz() {
             return (
               <div
                 className={`box-content__answer ${answeredRight ? "box-content__answer_good" : "box-content__answer_wrong"}`} key={index}
-                onClick={() => setSelectedAnswerIndex(index)}
+                onClick={chooseAnswer(index)}
               >
                 {data[answer].name}
               </div>
@@ -32,7 +31,10 @@ export default function Quizz() {
           );
         })
       }
-      {nextStep ? <NextButton onPress={newQuestion} /> : ''}
+      {/* {nextStep ? <NextButton onPress={newQuestion} /> : ''} */}
+      {nextStep ? <div className="validation"><button className="button__full" onClick={newQuestion}>Next</button></div> : ''}
     </div>
-  )
-}
+  );
+};
+
+export default Questionaire;
