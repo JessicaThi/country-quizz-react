@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import './scss/styles.scss'
-import adventure from "./img/adventure.svg"
-import NextButton from "./components/NextButton";
+import Quizz from "./components/Quizz";
+import Result from "./components/Result"
 
 function App() {
   const [data, setData] = useState('');
@@ -57,37 +57,13 @@ function App() {
     <main className="App">
       <div className="box">
         <h1 className="title">Country Quizz</h1>
-        <div className="box-content">
-          {/* (nextStep == '' || nextStep == 1)  */}
-          <img className="box-content__image-decoration" src={adventure} alt="adventure" />
-          {correctAnswerIndex ? <p className="box-content__question">{data[correctAnswerIndex].capital} is the capital of</p> : ''}
-          {
-            randomAnswers.map((answer, index) => {
-              const isSelected =
-                selectedAnswerIndex !== null && index === selectedAnswerIndex;
-
-              const answeredRight = answer === correctAnswerIndex;
-
-              if (isSelected) {
-                return (
-                  <div
-                    className={`box-content__answer ${answeredRight ? "box-content__answer_good" : "box-content__answer_wrong"}`} key={index}
-                    onClick={() => setSelectedAnswerIndex(index)}
-                  >
-                    {data[answer].name}
-                  </div>
-                );
-              }
-
-              return (
-                <div className="box-content__answer" key={index} onClick={() => checkAnswer(answeredRight, index)}>
-                  {data[answer].name}
-                </div>
-              );
-            })
+        {(function () {
+          if (nextStep === '' || nextStep === 1) {
+            return <Quizz />
+          } else {
+            return <Result />
           }
-          {nextStep ? <NextButton onPress={newQuestion} /> : ''}
-        </div>
+        })}
       </div>
     </main>
   );
