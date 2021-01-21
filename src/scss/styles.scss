@@ -95,17 +95,17 @@ main {
     opacity: 1;
     position: relative;
 
-    &:after {
-      content: '';
-      background-image: url("../img/wrong.svg");
-      background-color: pink;
-      background-size: cover;
-      color: $white;
-      height: 1.25rem;
-      width: 1.25rem;
-      position: absolute;
-      right: 1.125rem;
-    }
+    // &:after {
+    //   content: '';
+    //   background-image: url("../img/wrong.svg");
+    //   background-color: pink;
+    //   background-size: cover;
+    //   color: $white;
+    //   height: 1.25rem;
+    //   width: 1.25rem;
+    //   position: absolute;
+    //   right: 1.125rem;
+    // }
 
     &:hover {
       background-color: $red;

@@ -12,6 +12,7 @@ function App() {
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
   const [nextStep, setNextStep] = useState('');
   const [counter, setCounter] = useState(0);
+  const [myResult, setMyResult] = useState(false);
 
   useEffect(() => {
     fetch(API_URL)
@@ -47,7 +48,7 @@ function App() {
 
     if (answeredRight) {
       setCounter(counter + 1);
-    } 
+    }
   }
 
   const newQuestion = () => {
@@ -57,12 +58,17 @@ function App() {
     setNextStep('');
   }
 
+  const seeResult = () => {
+    setMyResult(true);
+  }
+
   const restart = () => {
     setRandomAnswers([]);
     setCorrectAnswerIndex(null);
     setSelectedAnswerIndex(null);
     setNextStep('');
     setCounter(0);
+    setMyResult(false);
   }
 
   return (
@@ -70,7 +76,7 @@ function App() {
       <div className="box">
         <h1 className="title">Country Quizz</h1>
         {(function () {
-          if (nextStep === '' || nextStep === true) {
+          if (!myResult) {
             return <Questionaire 
                     data={data} 
                     randomAnswers={randomAnswers} 
@@ -79,6 +85,7 @@ function App() {
                     chooseAnswer={chooseAnswer} 
                     checkAnswer={checkAnswer} 
                     nextStep={nextStep}
+                    seeResult={seeResult}
                     newQuestion={newQuestion} 
                   />
           } else {

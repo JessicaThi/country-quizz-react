@@ -1,7 +1,7 @@
 import React from 'react'
 import adventure from "./../img/adventure.svg"
 
-const Questionaire = ({ data, randomAnswers, correctAnswerIndex, selectedAnswerIndex, chooseAnswer, nextStep, newQuestion, checkAnswer }) => {
+const Questionaire = ({ data, randomAnswers, correctAnswerIndex, selectedAnswerIndex, chooseAnswer, checkAnswer, nextStep, newQuestion, seeResult }) => {
   return (
     <div className="box-content">
       <img className="box-content__image-decoration" src={adventure} alt="adventure" />
@@ -31,8 +31,8 @@ const Questionaire = ({ data, randomAnswers, correctAnswerIndex, selectedAnswerI
           );
         })
       }
-      {/* {nextStep ? <NextButton onPress={newQuestion} /> : ''} */}
       {nextStep ? <div className="validation"><button className="button__full" onClick={newQuestion}>Next</button></div> : ''}
+      {nextStep === false ? <div className="validation"><button className="button__full" onClick={seeResult}>Sorry</button></div> : ''}
     </div>
   );
 };
