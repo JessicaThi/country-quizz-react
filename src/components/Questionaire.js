@@ -11,6 +11,7 @@ const Questionaire = ({ seeResult, onRightAnswer }) => {
   const [correctAnswerId, setCorrectAnswerId] = useState(null);
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
   const [nextStep, setNextStep] = useState(null);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   useEffect(() => {
     fetch(API_URL)
@@ -39,6 +40,7 @@ const Questionaire = ({ seeResult, onRightAnswer }) => {
   const checkAnswer = (answeredRight, index) => {
     setSelectedAnswerIndex(index);
     setNextStep(answeredRight);
+    setIsDisabled(true);
 
     if (answeredRight) {
       onRightAnswer()
@@ -50,6 +52,7 @@ const Questionaire = ({ seeResult, onRightAnswer }) => {
     setCorrectAnswerId(null);
     setSelectedAnswerIndex(null);
     setNextStep(null);
+    setIsDisabled(false);
   }
 
   const alreadyAnswered = selectedAnswerIndex !== null;
@@ -61,43 +64,49 @@ const Questionaire = ({ seeResult, onRightAnswer }) => {
       <img className="box-content__image-decoration" src={adventure} alt="adventure" />
       {correctAnswerId ? <p className="box-content__question">{data[correctAnswerId].capital} is the capital of</p> : ''}
       <AnimatePresence>
-        {
-          choices.map((answerId, index) => {
-            const isSelected =
-              selectedAnswerIndex !== null && index === selectedAnswerIndex;
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          {
+            choices.map((answerId, index) => {
+              const isSelected =
+                selectedAnswerIndex !== null && index === selectedAnswerIndex;
 
-            const answeredRight = answerId === correctAnswerId;
+              const answeredRight = answerId === correctAnswerId;
 
-            if (alreadyAnswered && answeredRight) {
+              if (alreadyAnswered && answeredRight) {
+                return (
+                  <button
+                    className={`box-content__answer box-content__answer_good`} key={index} disabled={isDisabled}
+                  >
+                    <p><span>{letters[index]}</span> {data[answerId].name}</p>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  </button>
+                );
+              }
+
+              if (isSelected) {
+                return (
+                  <button
+                    className={`box-content__answer ${answeredRight ? "box-content__answer_good" : "box-content__answer_wrong"}`} key={index} disabled={isDisabled}
+                  >
+                    <p><span>{letters[index]}</span> {data[answerId].name}</p>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  </button>
+                );
+              }
+
               return (
-                <div
-                  className={`box-content__answer box-content__answer_good`} key={index}
+                <motion.button initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="box-content__answer" key={index} onClick={() => checkAnswer(answeredRight, index)}
+                  disabled={isDisabled}
                 >
-                  {letters[index]} {data[answerId].name}
-                </div>
+                  <p><span>{letters[index]}</span> {data[answerId].name}</p>
+                </motion.button>
               );
-            }
-
-            if (isSelected) {
-              return (
-                <div
-                  className={`box-content__answer ${answeredRight ? "box-content__answer_good" : "box-content__answer_wrong"}`} key={index}
-                >
-                  {letters[index]} {data[answerId].name}
-                </div>
-              );
-            }
-
-            return (
-              <motion.div initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="box-content__answer" key={index} onClick={() => checkAnswer(answeredRight, index)}>
-                {letters[index]} {data[answerId].name}
-              </motion.div>
-            );
-          })
-        }
+            })
+          }
+        </motion.div>
 
         {nextStep ? <motion.div initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

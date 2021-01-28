@@ -26,6 +26,7 @@ main {
 
 .box-content {
   width: 465px;
+  min-height: 430px;
   background-color: $white;
   border-radius: 1.5rem;
   padding: 4.25rem 2rem 2rem;
@@ -53,7 +54,11 @@ main {
   }
 
   &__answer {
-    font-family: $poppins_semibold;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: $poppins_medium;
     font-size: 1.125rem;
     color: $purple;
     border-radius: 0.75rem;
@@ -67,12 +72,30 @@ main {
       margin-bottom: 0;
     }
 
-    &:hover {
+    &:hover:not(:disabled) {
       color: $white;
       border: 1px solid $orange;
       background-color: $orange;
-      opacity: 1;
       cursor: pointer;
+    }
+
+    &:disabled {
+      opacity: 0.4 !important;
+      cursor: not-allowed;
+    }
+    
+    p {
+      display: flex;
+      text-align: left;
+
+      span {
+        padding-right: 2rem;
+      }
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
     }
   }
 
@@ -80,11 +103,14 @@ main {
     background-color: $green;
     border: 1px solid $green;
     color: $white;
-    opacity: 1;
 
     &:hover {
       background-color: $green;
       border: 1px solid $green;
+    }
+
+    &:disabled {
+      opacity: 1 !important;
     }
   }
 
@@ -92,24 +118,15 @@ main {
     background-color: $red;
     border: 1px solid $red;
     color: $white;
-    opacity: 1;
     position: relative;
-
-    // &:after {
-    //   content: '';
-    //   background-image: url("../img/wrong.svg");
-    //   background-color: pink;
-    //   background-size: cover;
-    //   color: $white;
-    //   height: 1.25rem;
-    //   width: 1.25rem;
-    //   position: absolute;
-    //   right: 1.125rem;
-    // }
 
     &:hover {
       background-color: $red;
       border: 1px solid $red;
+    }
+
+    &:disabled {
+      opacity: 1 !important;
     }
   }
 }
@@ -117,6 +134,7 @@ main {
 .validation {
   display: flex;
   justify-content: flex-end;
+  padding-top: 1.5rem;
 }
 
 .button {  

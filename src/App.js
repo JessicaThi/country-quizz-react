@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import './scss/styles.scss'
 import Questionaire from './components/Questionaire';
 import Result from "./components/Result"
 import { motion, AnimatePresence } from "framer-motion"
-
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -24,7 +23,6 @@ function App() {
     <main className="App">
       <div className="box">
         <AnimatePresence key={myResult} exitBeforeEnter>
-          {/* TODO handle loading answer `` */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <h1 className="title">Country Quizz</h1>
 
@@ -43,8 +41,6 @@ function App() {
             )}
           </motion.div>
         </AnimatePresence>
-
-
       </div>
     </main>
   );
