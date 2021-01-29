@@ -38,7 +38,7 @@
 
 ## Overview
 
-![screenshot](https://github.com/JessicaThi/country-quizz-react/blob/main/src/img/overview.png)
+![demo](https://github.com/JessicaThi/country-quizz-react/blob/main/src/img/demo.gif)
 
 #### What I learned
 - Better use of components
