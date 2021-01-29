@@ -12,7 +12,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://devchallenges.io/solutions/UFVJGvuGXkJ3XuF48WGt">
       Solution
     </a>
     <span> | </span>
@@ -40,12 +40,13 @@
 
 ![screenshot](https://github.com/JessicaThi/country-quizz-react/blob/main/src/img/overview.png)
 
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
+#### What I learned
+- Better use of components
+- Better comprehension with props
+- Understand logic of a quizz
 
-- Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
+#### My difficulties
+I thought the project will be easy but it wasn't. It was hard to find a good solution to make good quizz without trying to make it perfect. I know that I can still improve but I'm ok with my solution. Now, it's time to move to a new project :)
 
 ### Built With
 
@@ -53,6 +54,7 @@ Introduce your projects by taking a screenshot or a gif. Try to tell visitors a 
 
 - [Create React app](https://create-react-app.dev/)
 - [Sass](https://sass-lang.com/)
+- [Framer Motion](https://github.com/framer/motion) (Don't confuse with "Library" and "Motion" on the documentation)
 
 ## Features
 
@@ -60,7 +62,8 @@ Introduce your projects by taking a screenshot or a gif. Try to tell visitors a 
 
 This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/Bu3G2irnaXmfwQ8sZkw8) was to build an application to complete the given user stories :
 
-- [x] I can see at least 2 types of question: a city is the capital of.. or a flag belong to country..
+- [ ] I can see at least 2 types of question: a city is the capital of.. or a flag belong to country..
+
 - [x] I can see select an answer
 - [x] I can see if my answer is correct or incorrect
 - [x] When I answer correctly, I can move on to the next question
