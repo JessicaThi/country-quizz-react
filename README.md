@@ -55,6 +55,7 @@ I thought the project will be easy but it wasn't. It was hard to find a good sol
 - [Create React app](https://create-react-app.dev/)
 - [Sass](https://sass-lang.com/)
 - [Framer Motion](https://github.com/framer/motion) (Don't confuse with "Library" and "Motion" on the documentation)
+- [REST countries API](https://restcountries.eu/)
 
 ## Features
 
