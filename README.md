@@ -169,5 +169,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ## Contact
 
 - Website [Jessica-thielemans.com](https://www.jessica-thielemans.com/)
-- GitHub [@JessicaThi](https://{github.com/your-usermame})
+- GitHub [@JessicaThi](https://github.com/JessicaThi)
 - Twitter [@jessica_thlmns](https://twitter.com/Jessica_thlmns)
